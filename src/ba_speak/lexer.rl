@@ -27,7 +27,6 @@
 }%%
 =end
 
-module NormFramework
 module BaSpeak
 
   class Lexer
@@ -73,5 +72,4 @@ module BaSpeak
 
   end
 
-end
 end

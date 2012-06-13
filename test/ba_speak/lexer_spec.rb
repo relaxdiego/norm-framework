@@ -1,7 +1,6 @@
 require 'spec_helper'
-require 'norm_framework/ba_speak/lexer'
+require 'ba_speak/lexer'
 
-module NormFramework
 module BaSpeak
 
   describe Lexer do
@@ -120,7 +119,6 @@ module BaSpeak
       Lexer.new.tokenize(data)
     end
 
-  end # describe kLexer
+  end # describe Lexer
 
 end # module BaSpeak
-end # module NormFramework

@@ -6,14 +6,13 @@
 
 =end
 
-module NormFramework
 module BaSpeak
 
   class Lexer
 
     def initialize
       
-# line 17 "lib/norm_framework/ba_speak/lexer.rb"
+# line 16 "lib/ba_speak/lexer.rb"
 class << self
 	attr_accessor :_lexer_actions
 	private :_lexer_actions, :_lexer_actions=
@@ -191,7 +190,7 @@ end
 self.lexer_en_main = 21;
 
 
-# line 37 "src/ba_speak/lexer.rl"
+# line 36 "src/ba_speak/lexer.rl"
       # %% this just fixes syntax highlighting in TextMate et al.
     end
 
@@ -224,7 +223,7 @@ self.lexer_en_main = 21;
       token_array = []
 
       
-# line 228 "lib/norm_framework/ba_speak/lexer.rb"
+# line 227 "lib/ba_speak/lexer.rb"
 begin
 	p ||= 0
 	pe ||= data.length
@@ -234,9 +233,9 @@ begin
 	act = 0
 end
 
-# line 69 "src/ba_speak/lexer.rl"
+# line 68 "src/ba_speak/lexer.rl"
       
-# line 240 "lib/norm_framework/ba_speak/lexer.rb"
+# line 239 "lib/ba_speak/lexer.rb"
 begin
 	_klen, _trans, _keys, _acts, _nacts = nil
 	_goto_level = 0
@@ -270,7 +269,7 @@ begin
 		begin
 ts = p
 		end
-# line 274 "lib/norm_framework/ba_speak/lexer.rb"
+# line 273 "lib/ba_speak/lexer.rb"
 		end # from state action switch
 	end
 	if _trigger_goto
@@ -404,7 +403,7 @@ end
  emit_row(data, token_array, ts, te) end
 end 
 			end
-# line 408 "lib/norm_framework/ba_speak/lexer.rb"
+# line 407 "lib/ba_speak/lexer.rb"
 			end # action switch
 		end
 	end
@@ -429,7 +428,7 @@ when 1 then
 		begin
 act = 0
 		end
-# line 433 "lib/norm_framework/ba_speak/lexer.rb"
+# line 432 "lib/ba_speak/lexer.rb"
 		end # to state action switch
 	end
 	if _trigger_goto
@@ -460,12 +459,11 @@ end
 	end
 	end
 
-# line 70 "src/ba_speak/lexer.rl"
+# line 69 "src/ba_speak/lexer.rl"
 
       token_array
     end
 
   end
 
-end
 end
