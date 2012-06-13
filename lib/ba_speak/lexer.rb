@@ -2,7 +2,7 @@
 # line 1 "src/ba_speak/lexer.rl"
 =begin
 
-# line 27 "src/ba_speak/lexer.rl"
+# line 28 "src/ba_speak/lexer.rl"
 
 =end
 
@@ -190,7 +190,7 @@ end
 self.lexer_en_main = 21;
 
 
-# line 36 "src/ba_speak/lexer.rl"
+# line 37 "src/ba_speak/lexer.rl"
       # %% this just fixes syntax highlighting in TextMate et al.
     end
 
@@ -200,8 +200,12 @@ self.lexer_en_main = 21;
     end
 
     def emit_row(data, target_array, ts, te)
-      target_array << [:ROW, 'Row']
       cells = data[(ts + 1)...( te - 1)].pack("c*")
+
+      # ignore borders
+      return if /^\-+/ =~ cells
+
+      target_array << [:ROW, 'Row']
       cells.split('|').each do |cell|
         target_array << [:CELL, cell.strip]
       end
@@ -223,7 +227,7 @@ self.lexer_en_main = 21;
       token_array = []
 
       
-# line 227 "lib/ba_speak/lexer.rb"
+# line 231 "lib/ba_speak/lexer.rb"
 begin
 	p ||= 0
 	pe ||= data.length
@@ -233,9 +237,9 @@ begin
 	act = 0
 end
 
-# line 68 "src/ba_speak/lexer.rl"
+# line 73 "src/ba_speak/lexer.rl"
       
-# line 239 "lib/ba_speak/lexer.rb"
+# line 243 "lib/ba_speak/lexer.rb"
 begin
 	_klen, _trans, _keys, _acts, _nacts = nil
 	_goto_level = 0
@@ -269,7 +273,7 @@ begin
 		begin
 ts = p
 		end
-# line 273 "lib/ba_speak/lexer.rb"
+# line 277 "lib/ba_speak/lexer.rb"
 		end # from state action switch
 	end
 	if _trigger_goto
@@ -342,46 +346,46 @@ when 3 then
 te = p+1
 		end
 when 4 then
-# line 21 "src/ba_speak/lexer.rl"
+# line 22 "src/ba_speak/lexer.rl"
 		begin
 act = 3;		end
 when 5 then
-# line 24 "src/ba_speak/lexer.rl"
+# line 25 "src/ba_speak/lexer.rl"
 		begin
 te = p+1
 		end
 when 6 then
-# line 19 "src/ba_speak/lexer.rl"
+# line 20 "src/ba_speak/lexer.rl"
 		begin
 te = p
 p = p - 1; begin  emit_group_name(token_array, data, ts, te)   end
 		end
 when 7 then
-# line 20 "src/ba_speak/lexer.rl"
+# line 21 "src/ba_speak/lexer.rl"
 		begin
 te = p
 p = p - 1; begin  emit_requirement(token_array, data, ts, te)  end
 		end
 when 8 then
-# line 21 "src/ba_speak/lexer.rl"
+# line 22 "src/ba_speak/lexer.rl"
 		begin
 te = p
 p = p - 1; begin  emit_row(data, token_array, ts, te)  end
 		end
 when 9 then
-# line 22 "src/ba_speak/lexer.rl"
+# line 23 "src/ba_speak/lexer.rl"
 		begin
 te = p
 p = p - 1; begin  emit_text(token_array, data, ts, te)  end
 		end
 when 10 then
-# line 20 "src/ba_speak/lexer.rl"
+# line 21 "src/ba_speak/lexer.rl"
 		begin
  begin p = ((te))-1; end
  begin  emit_requirement(token_array, data, ts, te)  end
 		end
 when 11 then
-# line 22 "src/ba_speak/lexer.rl"
+# line 23 "src/ba_speak/lexer.rl"
 		begin
  begin p = ((te))-1; end
  begin  emit_text(token_array, data, ts, te)  end
@@ -403,7 +407,7 @@ end
  emit_row(data, token_array, ts, te) end
 end 
 			end
-# line 407 "lib/ba_speak/lexer.rb"
+# line 411 "lib/ba_speak/lexer.rb"
 			end # action switch
 		end
 	end
@@ -428,7 +432,7 @@ when 1 then
 		begin
 act = 0
 		end
-# line 432 "lib/ba_speak/lexer.rb"
+# line 436 "lib/ba_speak/lexer.rb"
 		end # to state action switch
 	end
 	if _trigger_goto
@@ -459,7 +463,7 @@ end
 	end
 	end
 
-# line 69 "src/ba_speak/lexer.rl"
+# line 74 "src/ba_speak/lexer.rl"
 
       token_array
     end

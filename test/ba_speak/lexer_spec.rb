@@ -77,6 +77,21 @@ module BaSpeak
       output.must_equal tokens
     end
 
+    it "must ignore table borders" do
+      output = tokenize <<-EOF
+                | Name      | Description       |
+                |-----------|-------------------|
+                | Project A | First Project     |
+                | Project B | Second Project    |
+              EOF
+      tokens = [
+                 [:ROW, 'Row'], [:CELL, 'Name'],      [:CELL, 'Description'],
+                 [:ROW, 'Row'], [:CELL, 'Project A'], [:CELL, 'First Project'],
+                 [:ROW, 'Row'], [:CELL, 'Project B'], [:CELL, 'Second Project']
+               ]
+      output.must_equal tokens
+    end
+
     it "must tokenize requirements with placeholders" do
       output = tokenize <<-EOF
                * Given <Role>

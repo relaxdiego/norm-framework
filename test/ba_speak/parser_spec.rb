@@ -128,6 +128,7 @@ module BaSpeak
                * A <Role> in the system <Can or Cannot Create> projects
 
                    | Role | Can or Cannot Create |
+                   |------|----------------------|
                    | PM   | Can Create           |
                    | User | Cannot Create        |
 

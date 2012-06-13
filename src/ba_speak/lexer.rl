@@ -4,15 +4,16 @@
   machine lexer;
 
   newline       = ('\n' | '\r\n');
-  string        = [A-Za-z0-9]print*;
-  req_string    = [A-Za-z0-9<]print*;
-  underline     = [=][=][=][=]*;
   tab_or_space  = [\t ];
+  string        = [A-Za-z0-9] print*;
+  req_string    = [A-Za-z0-9<] print*;
+  underline     = [=][=][=][=]*;
+  pipe          = '|';
 
   group_name  = string tab_or_space* newline tab_or_space* underline;
   text        = string tab_or_space* (newline tab_or_space* string)* (newline newline)*;
   requirement = '* ' req_string tab_or_space* (newline tab_or_space* req_string)* (newline newline)*;
-  table_row   = '|'print*'|';
+  table_row   = pipe print* pipe;
 
   main := |*
 
@@ -42,8 +43,12 @@ module BaSpeak
     end
 
     def emit_row(data, target_array, ts, te)
-      target_array << [:ROW, 'Row']
       cells = data[(ts + 1)...( te - 1)].pack("c*")
+
+      # ignore borders
+      return if /^\-+/ =~ cells
+
+      target_array << [:ROW, 'Row']
       cells.split('|').each do |cell|
         target_array << [:CELL, cell.strip]
       end
