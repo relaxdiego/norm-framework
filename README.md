@@ -54,6 +54,10 @@ Notes:
    header row may be safely ommitted.
  * Notice that there are no word-like keywords in the above syntax making
    it il8n-ready at the onset.
+ * The requirements file can be any text file but the convention is to
+   use the .requirements file extension
+ * Norm looks for requirements file in `directives/requirements` although
+   this can be customized.
 
 **Step 2: Write Test Cases**
 
@@ -86,6 +90,13 @@ Test Case:
 
 (etc...More test cases...etc)
 ```
+
+Notes:
+
+  * The test case file can be any text file but the convention is to
+    use the .test_cases file extension
+  * Norm looks for test case file in `directives/test_cases` although
+    this can be customized.
 
 **Step 3: Compile**
 
