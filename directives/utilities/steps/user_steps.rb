@@ -6,6 +6,7 @@ step /^Delete the account with username Bob at exit$/ do
   # do stuff here
 end
 
-step /^The account with username Bob has a role of Temp$/ do
+step /^The account with username (.+) has a role of (.+)$/ do |username, role_name|
+  puts role_name
   # do stuff here
 end
