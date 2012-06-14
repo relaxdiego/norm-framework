@@ -2,9 +2,11 @@
 $:.unshift File.expand_path("../../lib", __FILE__)
 
 require 'bundler/setup'
+require 'norm_framework/compiler'
 require 'norm_framework/runner'
 require 'norm_framework/steps'
 
 include NormFramework
 
+Compiler.new.start
 Runner.new.start
