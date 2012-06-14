@@ -1,0 +1,23 @@
+Test Case:
+  A user who has a role of (.+) can create users
+
+  Variables:
+    * Role Name   = 'Temp'
+    * My Username = 'Bob'
+    * My Password = '123qwe'
+
+  Preconditions:
+    * An account with username <My Username> and password <My Password> exists
+    * The account with username <My Username> has a role of <Role Name>
+    * I am logged out
+
+  Cleanup:
+    * Delete the account with username <My Username> at exit
+
+  Script:
+    * Visit the Login page
+    * Fill in the Username field with <My Username>
+    * Fill in the Password field with <My Password>
+    * Click the Login button
+    * The New User button should be enabled
+    * This is an undefined step

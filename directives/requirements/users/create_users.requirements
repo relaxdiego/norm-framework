@@ -1,0 +1,25 @@
+Create Users
+============
+
+  * A user who has a role of <Role Name> in the system
+    <Can or Cannot Create> users
+
+    Examples:
+      | Role Name | Can or Cannot Create |
+      |-----------|----------------------|
+      | Manager   | Can Create           |
+      | Member    | Can Create           |
+      | Guest     | Cannot Create        |
+
+    Notes:
+      Arbitrary text that the business analyst or domain expert
+      thinks might help the development team understand the
+      problem much better. Blah blah blah.
+
+
+  * Newly created users have a status of 'Active'
+
+    Important:
+      More arbitrary text written by the domain expert.
+      Blah blah blah blah. The quick brown lorem ipsum
+      jumped over the dolor sit blah.
