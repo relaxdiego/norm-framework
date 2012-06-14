@@ -18,6 +18,5 @@ module BaSpeak
   class RequirementNode < Node; end
   class ExamplesNode < Node; end
   class RowNode < Node; end
-  class TextNode < Node; end
 
 end
