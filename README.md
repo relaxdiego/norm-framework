@@ -1,8 +1,8 @@
-Norm
-====
+Norm (Prototype 4)
+==================
 Norm is a robot that you can feed business requirements, their corresponding
 test cases, and the steps that can be used within those test cases. He will then
-combine all of these information to build and run their equivalent MiniTest specs.
+combine all of these information to build and run their equivalent [MiniTest](https://github.com/seattlerb/minitest) specs.
 
 How it Works
 ------------
@@ -89,7 +89,7 @@ Test Case:
 
 **Step 3: Compile**
 
-Run `bin/norm` to compile the above into [minitest](https://github.com/seattlerb/minitest) specs.
+Run `bin/norm` to compile the above into [MiniTest](https://github.com/seattlerb/minitest) specs.
 For example, the above files might generate:
 
 ```
