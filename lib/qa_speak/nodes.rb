@@ -55,7 +55,7 @@ module QaSpeak
       children[:cleanup]       = children.delete(:cleanup) || CleanupNode.new
       children[:script]        = children.delete(:script) || ScriptNode.new
 
-      @regex = Regexp.new(name, Regexp::IGNORECASE)
+      @regex = Regexp.new("^#{name}$", Regexp::IGNORECASE)
 
       super name, children
     end
@@ -77,6 +77,9 @@ module QaSpeak
       spec = ""
       spec << "  describe \"#{ requirement }\" do\n"
       spec << "    before do\n"
+
+      # Make the $1, $2, etc variables available to this spec
+      spec << "      #{ regex.inspect } =~ \"#{ requirement }\" \n"
 
       preconditions.each do |step|
         str = step.name.dup

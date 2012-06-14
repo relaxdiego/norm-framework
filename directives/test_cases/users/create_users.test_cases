@@ -2,7 +2,7 @@ Test Case:
   A user who has a role of (.+) can create users
 
   Variables:
-    * Role Name   = 'Temp'
+    * Role Name   = $1
     * My Username = 'Bob'
     * My Password = '123qwe'
 
