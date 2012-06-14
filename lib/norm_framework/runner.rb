@@ -20,7 +20,7 @@ module NormFramework
       require 'minitest/colorize'
 
       recursive_require File.join(Dir.pwd, 'directives', 'utilities')
-      recursive_require File.join(Dir.pwd, '__spec__')
+      require File.join(Dir.pwd, '__spec__.rb')
     end
   end
 
