@@ -1,6 +1,8 @@
 Norm
 ====
-A framework that let's you write executable software documentation.
+Norm is a robot that you can feed business requirements, their corresponding
+test cases, and the steps that can be used within those test cases. He will then
+combine all of these information to build and run their equivalent MiniTest specs.
 
 How it Works
 ------------
@@ -87,12 +89,10 @@ Test Case:
 
 **Step 3: Compile**
 
-Run `norm` to compile the above into [minitest](https://github.com/seattlerb/minitest) specs.
+Run `bin/norm` to compile the above into [minitest](https://github.com/seattlerb/minitest) specs.
 For example, the above files might generate:
 
 ```
-require 'minitest/autorun'
-
 describe 'Test Suite' do
 
   before do
@@ -104,21 +104,21 @@ describe 'Test Suite' do
 
     describe 'A user who is a Manager of a project can create tickets in it' do
       before do
-        @steps.call "An account with username #{ my_username } and password #{ my_password } exists"
-        @steps.call "The account with username #{ my_username } has a role of #{ 'Manager' }"
-        @steps.call "I am logged out"
+        Steps.call "An account with username #{ my_username } and password #{ my_password } exists"
+        Steps.call "The account with username #{ my_username } has a role of #{ 'Manager' }"
+        Steps.call "I am logged out"
       end
 
       after do
-        @steps.call "Delete the account with username #{ my_username } at exit"
+        Steps.call "Delete the account with username #{ my_username } at exit"
       end
 
       it 'must pass' do
-        @steps.call "Visit the Login page"
-        @steps.call "Fill in the Username field with #{ my_username }"
-        @steps.call "Fill in the Password field with #{ my_password }"
-        @steps.call "Click the Login button"
-        @steps.call "The New Ticket button should be enabled"
+        Steps.call "Visit the Login page"
+        Steps.call "Fill in the Username field with #{ my_username }"
+        Steps.call "Fill in the Password field with #{ my_password }"
+        Steps.call "Click the Login button"
+        Steps.call "The New Ticket button should be enabled"
       end
     end
 
@@ -129,9 +129,3 @@ describe 'Test Suite' do
   (etc...More groups...etc)
 end
 ```
-
-Notes:
-
-  * Norm only re-compiles the test cases when at least one
-    .requirements or .test_cases files have a modification
-    date more recent than the compiled test file.
