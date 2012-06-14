@@ -36,9 +36,9 @@ module QaSpeak
                EOF
       tokens = [
                  [:VARIABLES, "Variables"],
-                   [:STEP, "My Name = $1"],
-                   [:STEP, "A long variable name = 'something'"],
-                   [:STEP, "Role = role_id"]
+                   [:LINE, "My Name = $1"],
+                   [:LINE, "A long variable name = 'something'"],
+                   [:LINE, "Role = role_id"]
                ]
       output.must_equal tokens
     end
@@ -52,9 +52,9 @@ module QaSpeak
                  * Ensure   that   the   app is running
                EOF
       tokens = [
-                   [:STEP, "Ensure that the username <My Username> exists"],
-                   [:STEP, "Ensure that the database is cleaned up of previous testing data"],
-                   [:STEP, "Ensure that the app is running"]
+                   [:LINE, "Ensure that the username <My Username> exists"],
+                   [:LINE, "Ensure that the database is cleaned up of previous testing data"],
+                   [:LINE, "Ensure that the app is running"]
                ]
       output.must_equal tokens
     end

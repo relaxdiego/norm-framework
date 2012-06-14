@@ -246,9 +246,9 @@ self.lexer_en_main = 54;
       token_array << [value.upcase.to_sym, value]
     end
 
-    def emit_step(token_array, data, ts, te)
+    def emit_line(token_array, data, ts, te)
       value = data[ts...te].pack("c*").split.join(' ').gsub(/\* /, '').strip
-      token_array << [:STEP, value]
+      token_array << [:LINE, value]
     end
 
     def emit_test_case(token_array, data, ts, te)
@@ -401,7 +401,7 @@ when 6 then
 # line 24 "src/qa_speak/lexer.rl"
 		begin
 te = p
-p = p - 1; begin  emit_step(token_array, data, ts, te)  end
+p = p - 1; begin  emit_line(token_array, data, ts, te)  end
 		end
 when 7 then
 # line 22 "src/qa_speak/lexer.rl"
@@ -413,7 +413,7 @@ when 8 then
 # line 24 "src/qa_speak/lexer.rl"
 		begin
  begin p = ((te))-1; end
- begin  emit_step(token_array, data, ts, te)  end
+ begin  emit_line(token_array, data, ts, te)  end
 		end
 # line 419 "lib/qa_speak/lexer.rb"
 			end # action switch

@@ -15,13 +15,13 @@
               tab_or_space* tc_string tab_or_space* (newline
               tab_or_space* tc_string)* (newline newline)*;
 
-  step      = '* ' string tab_or_space* (newline tab_or_space* string)*;
+  line      = '* ' string tab_or_space* (newline tab_or_space* string)*;
 
   main := |*
 
     test_case     => { emit_test_case(token_array, data, ts, te) };
     section_label => { emit_label(token_array, data, ts, te) };
-    step          => { emit_step(token_array, data, ts, te) };
+    line          => { emit_line(token_array, data, ts, te) };
 
     space;
 
@@ -43,9 +43,9 @@ module QaSpeak
       token_array << [value.upcase.to_sym, value]
     end
 
-    def emit_step(token_array, data, ts, te)
+    def emit_line(token_array, data, ts, te)
       value = data[ts...te].pack("c*").split.join(' ').gsub(/\* /, '').strip
-      token_array << [:STEP, value]
+      token_array << [:LINE, value]
     end
 
     def emit_test_case(token_array, data, ts, te)
