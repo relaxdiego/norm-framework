@@ -1,7 +1,7 @@
 Create Tickets
 ==============
 
-  * A user who has a role of <Role Name> in the system
+  * A user who has a role of <Role Name>
     <Can or Cannot Create> tickets in it
 
     Examples:
@@ -16,10 +16,4 @@ Create Tickets
       thinks might help the development team understand the
       problem much better. Blah blah blah.
 
-
-  * Newly created tickets have a status of 'Open'
-
-    Important:
-      More arbitrary text written by the domain expert.
-      Blah blah blah blah. The quick brown lorem ipsum
-      jumped over the dolor sit blah.
+  * Newly created tickets have a status of 'Active'

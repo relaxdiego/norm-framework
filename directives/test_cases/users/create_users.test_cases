@@ -20,4 +20,13 @@ Test Case:
     * Fill in the Password field with <My Password>
     * Click the Login button
     * The New User button should be enabled
-    * This is an undefined step
+
+
+Test Case:
+  A user who has a role of (.+) cannot create users
+
+  Variables:
+    * Role Name = $1
+
+  Script:
+    * The New Ticket button should be enabled
