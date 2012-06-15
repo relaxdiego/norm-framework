@@ -1,23 +1,27 @@
-Norm (Prototype 4)
-==================
-Norm is a robot that you can feed business requirements, their corresponding
-test cases, and the steps that can be used within those test cases. He will then
-combine all of these information to build and run their equivalent [MiniTest](https://github.com/seattlerb/minitest) specs.
+Norm
+====
+Norm is a virtual robot who helps software teams auto-verify
+business requirements against an application. Feed him requirement
+files, their corresponding test cases, and the definition of
+each step used in the test cases. Norm will then report back the 
+status of each requirement.
 
-How it Works
-------------
+Here's a [video demo](http://www.youtube.com/watch?v=RuC8owWbdQA&feature=g-upl).
+
+Usage
+-----
 
 **Step 1: Write Requirements**
 
-You start by writing requirements with the following format (Pretend
-that we're writing requirements for a bug tracking software)
+The business analyst writes requirements using the "BA Speak" syntax.
+For example:
 
 ```
 Create Tickets
 ==============
 
-  * A user who is a <Role> <Can or Cannot Create>
-    tickets in it
+  * A user who has a role of <Role> in the system
+    <Can or Cannot Create> support tickets
 
     Examples:
       | Role    | Can or Cannot Create |
@@ -61,12 +65,12 @@ Notes:
 
 **Step 2: Write Test Cases**
 
-Next, write test case templates that will match the requirements above. For
-example:
+Next, QA writes test case templates to match the above requirements
+by using the "QA Speak" syntax. For example:
 
 ```
 Test Case:
-  A user who is a (.+) can create tickets in it
+  A user who has a role of (.+) in the system can create support tickets
 
   Variables:
     * Role Name   = $1
@@ -87,56 +91,47 @@ Test Case:
     * Fill in the Password field with <My Password>
     * Click the Login button
     * The New Ticket button should be enabled
-
-(etc...More test cases...etc)
 ```
 
 Notes:
 
+  * The test case name can be a string or a regular expression
   * The test case file can be any text file but the convention is to
     use the .test_cases file extension
   * Norm looks for test case file in `directives/test_cases` although
     this can be customized.
 
-**Step 3: Compile**
+**Step 3: Define re-usable steps**
 
-Run `bin/norm` to compile the above into [MiniTest](https://github.com/seattlerb/minitest) specs.
-For example, the above files might generate:
+A programmer writes the equivalent Ruby code for the steps used in the test cases. For example:
 
 ```
-describe 'Test Suite' do
-
-  before do
-    # Initialize the test suite's runtime objects
-    # e.g. @steps
-  end
-
-  describe 'Create Tickets' do
-
-    describe 'A user who is a Manager of a project can create tickets in it' do
-      before do
-        Steps.call "An account with username #{ my_username } and password #{ my_password } exists"
-        Steps.call "The account with username #{ my_username } has a role of #{ 'Manager' }"
-        Steps.call "I am logged out"
-      end
-
-      after do
-        Steps.call "Delete the account with username #{ my_username } at exit"
-      end
-
-      it 'must pass' do
-        Steps.call "Visit the Login page"
-        Steps.call "Fill in the Username field with #{ my_username }"
-        Steps.call "Fill in the Password field with #{ my_password }"
-        Steps.call "Click the Login button"
-        Steps.call "The New Ticket button should be enabled"
-      end
-    end
-
-    (etc...More test cases...etc)
-
-  end
-
-  (etc...More groups...etc)
+step /^Visit the (.+) page$/i do |page_name|
+  # Add Ruby code here
 end
+
+step /^Fill in the (.+) field with (.+)$/i do |field_name, value|
+  # Add Ruby code here
+end
+
+step /^Click the (.+) button$/i do |button_name|
+  # Add Ruby code here
+end
+```
+
+**Step 4: Run it!**
+
+Run `bin/norm` to compile and execute the above directives:
+
+```
+$ bin/norm
+Run options: --seed 51346
+
+# Running tests:
+
+.......
+
+Finished tests in 0.004842s, 1445.6836 tests/s, 826.1049 assertions/s.
+
+7 tests, 4 assertions, 0 failures, 0 errors, 0 skips
 ```
