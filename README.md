@@ -1,9 +1,9 @@
 Norm
 ====
-Norm is a virtual robot who helps software teams auto-verify
+Norm is a virtual robot that helps software teams auto-verify
 business requirements against an application. Feed him requirement
 files, their corresponding test cases, and the definition of
-each step used in the test cases. Norm will then report back the 
+each step used in the test cases. Norm will then report back the
 status of each requirement.
 
 Here's a [video demo](http://www.youtube.com/watch?v=RuC8owWbdQA&feature=g-upl).
@@ -65,7 +65,7 @@ Notes:
 
 **Step 2: Write Test Cases**
 
-Next, QA writes test case templates to match the above requirements
+Next, QA writes test case templates that apply to one or more requirements
 by using the "QA Speak" syntax. For example:
 
 ```
